@@ -8,14 +8,65 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     </head>
     <body>
+        <script>
+            const modalContent = {
+                'btnGoofy': {
+                    title: 'Goofy Monkey',
+                    body: 'A goofy monkey has been selected.'
+                },
+                'btnSmart': {
+                    title: 'Smart Monkey',
+                    body: 'A smart monkey has been selected.'
+                },
+                'btnProud': {
+                    title: 'Proud Monkey',
+                    body: 'A proud monkey has been selected.'
+                }
+            };
+
+            function showModal(buttonId) {
+                const content = modalContent[buttonId];
+                if (content) {
+                    document.getElementById("modalTitle").innerText = content.title;
+                    document.getElementById("modalBody").innerText = content.body;
+
+                    var modal = document.getElementById("mainModal");
+                    modal.style.display = "block";
+
+                    var span = document.getElementsByClassName("close")[0];
+                    span.onclick = function() {
+                        modal.style.display = "none";
+                    }
+
+                    window.onclick = function(event) {
+                        if (event.target == modal) {
+                            modal.style.display = "none";
+                        }
+                    }
+                }
+            }
+
+            window.onload = function() {
+                document.getElementById("btnGoofy").onclick = function() {
+                    showModal("btnGoofy");
+                }
+                document.getElementById("btnSmart").onclick = function() {
+                    showModal("btnSmart");
+                }
+                document.getElementById("btnProud").onclick = function() {
+                    showModal("btnProud");
+                }
+            }
+        </script>
+
         <header id="navigation">
-            <h1 id="header_h1">PersonaPath</h1>
             <nav>
-                <ul>
+                <h1 id="header_h1">PersonaPath</h1>
+                <ul class="computer">
                     <li><a href="./index.html">Home</a></li>
                     <li>
                         <div class="dropdown">
-                            <a class="dropbtn">Dropdown</a>
+                            <a class="dropbtn">Services</a>
                             <div class="dropdown-content">
                                 <a href="#about">About</a>
                                 <a href="#contact">Contact</a>
@@ -24,27 +75,58 @@
                     </li>
                     <li><a href="./kartites.html">Cards</a></li>
                 </ul>
+                <ul class="phone">
+                    <li>
+                        <div class="dropdown">
+                            <a class="dropbtn"><img src="./clipart365828.png" style="width: 20px; max-height: auto;"></a>
+                            <div class="dropdown-content">
+                                <a href="./index.html">Home</a>
+                                <a href="./kartites.html">Cards</a>
+                                <a href="#about">About</a>
+                                <a href="#contact">Contact</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </nav>
         </header>
+
         <div class="boxes">
             <div class="box">
                 <h4>Goofy monkey</h4>
                 <img src="https://purepng.com/public/uploads/large/purepng.com-monkeymonkeyfunnyanimalwildchimpanzeeape-981524651620xnkin.png">
                 <p>A goofy monkey.</p>
-                <button class="box-btn">Select</button>
+                <button class="box-btn" id="btnGoofy">Select</button>
             </div>
             <div class="box">
                 <h4>Smart monkey</h4>
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3bnByIxAtiPSIJNVJHgTHmTAHCvixEHr0cl4qbL6fdYbzXSapSN5b9GMrDzpEfMmIawQ&usqp=CAU">
                 <p>He looks smart.</p>
-                <button class="box-btn">Select</button>
+                <button class="box-btn" id="btnSmart">Select</button>
             </div>
             <div class="box">
                 <h4>Proud monkey</h4>
                 <img src="https://www.transparentpng.com/thumb/monkey/cZXum8-never-underestimate-the-importance-signals.png">
                 <p>He looks proud.</p>
-                <button class="box-btn">Select</button>
+                <button class="box-btn" id="btnProud">Select</button>
             </div>
         </div>
+
+        <div id="mainModal" class="modal-content">
+            <div class="modal-header">
+              <span class="close">X</span>
+              <h2 id="modalTitle">Modal Title</h2>
+            </div>
+            <div class="modal-body">
+              <p id="modalBody">Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+              <h3>Thank you!</h3>
+            </div>
+        </div>
+
     </body>
+    <footer>
+        <p>&copy; 2024 PersonaPath. Visas tiesības aizsargātas.</p>
+    </footer>
 </html>
